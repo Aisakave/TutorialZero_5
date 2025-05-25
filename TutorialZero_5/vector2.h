@@ -11,7 +11,7 @@ public:
 	Vector2() = default;
 	~Vector2() = default;
 
-	Vector2(float x_, float y_) : x(x_), y(y_) {}
+	Vector2(float x_, float y_) : x(x_), y(y_) { }
 	
 	Vector2 operator+(const Vector2& vec) const
 	{

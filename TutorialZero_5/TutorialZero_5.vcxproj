@@ -130,6 +130,7 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="animation.h" />
     <ClInclude Include="atlas.h" />
     <ClInclude Include="timer.h" />
     <ClInclude Include="util.h" />
