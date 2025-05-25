@@ -9,23 +9,23 @@ public:
 
 	void restart()
 	{
-		passTime = 0;
+		pass_time = 0;
 		shotted = false;
 	}
 
-	void setWaitTime(float val)
+	void set_wait_time(float val)
 	{
-		waitTime = val;
+		wait_time = val;
 	}
 
-	void setOneShot(bool flag)
+	void set_one_shot(bool flag)
 	{
-		oneShot = flag;
+		one_shot = flag;
 	}
 
-	void setOnTimeOut(std::function<void()> onTimeOutFunc_)
+	void set_on_timeout(std::function<void()> on_timeout_)
 	{
-		this->onTimeOutFunc = onTimeOutFunc_;
+		this->on_timeout = on_timeout_;
 	}
 
 	void pause()
@@ -38,27 +38,27 @@ public:
 		paused = false;
 	}
 
-	void onUpdate(float delta)
+	void on_update(float delta)
 	{
 		if (paused) return;
 
-		passTime += delta;
-		if (passTime >= waitTime)
+		pass_time += delta;
+		if (pass_time >= wait_time)
 		{
-			bool canShot = (!oneShot || (oneShot && !shotted));
+			bool can_shot = (!one_shot || (one_shot && !shotted));
 			shotted = true;
-			if (canShot && onTimeOutFunc)
-				onTimeOutFunc();
-			passTime -= waitTime;
+			if (can_shot && on_timeout)
+				on_timeout();
+			pass_time -= wait_time;
 		}
 	}
 
 private:
-	float passTime = 0;
-	float waitTime = 0;
+	float pass_time = 0;
+	float wait_time = 0;
 	bool paused = false;
 	bool shotted = false;
-	bool oneShot = false;
-	std::function<void()> onTimeOutFunc;
+	bool one_shot = false;
+	std::function<void()> on_timeout;
 
 };
