@@ -13,7 +13,8 @@ struct Rect
 // 裁剪img任意大小的图并显示在任意处
 	// src	裁剪
 	// dst	缩放	
-void putimage_ex(IMAGE* img, const Rect* rect_dst, const Rect* rect_src = nullptr) {
+void putimage_ex(IMAGE* img, const Rect* rect_dst, const Rect* rect_src = nullptr)
+{
 
 	Rect src_{ 0, 0, img->getwidth(), img->getheight() };
 
