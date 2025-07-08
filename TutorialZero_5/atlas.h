@@ -17,7 +17,7 @@ public:
 		for (int i = 0; i < num; i++)
 		{
 			// 假设传进来的 path_template 是：_T("images\\enemy%d.png")
-			// path_file 被格式化为 "images\enemy1.png", "images\enemy2.png", ...
+			// path_file 被格式化为 "images\enemy1.png", "images\enemy2.png", ......
 			_stprintf_s(path_file, path_template, i + 1);
 			loadimage(&img_list[i], path_file);
 		}
