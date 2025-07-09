@@ -259,24 +259,29 @@ void ResourceManager::flip_image(IMAGE* src_image, IMAGE* dst_image, int num_h)
 	int w = src_image->getwidth();
 	int h = src_image->getheight();
 	int w_frame = w / num_h;
-	Resize(dst_image, w, h); // 注意是w
+
+	Resize(dst_image, w, h); // 保留整张图大小
+
 	DWORD* src_buffer = (DWORD*)GetImageBuffer(src_image);
 	DWORD* dst_buffer = (DWORD*)GetImageBuffer(dst_image);
+
 	for (int i = 0; i < num_h; i++)
 	{
 		int x_left = i * w_frame;
 		int x_right = (i + 1) * w_frame;
+
 		for (int y = 0; y < h; y++)
 		{
 			for (int x = x_left; x < x_right; x++)
 			{
 				int idx_src = y * w + x;
-				int idx_dst = y * w + x_right - (x - x_left);
+				int idx_dst = y * w + (x_right - 1 - (x - x_left)); // 修正越界
 				dst_buffer[idx_dst] = src_buffer[idx_src];
 			}
 		}
 	}
 }
+
 
 void ResourceManager::flip_image(const std::string& src_id, const std::string& dst_id, int num_h)
 {
