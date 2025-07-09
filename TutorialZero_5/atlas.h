@@ -19,6 +19,7 @@ public:
 			// 假设传进来的 path_template 是：_T("images\\enemy%d.png")
 			// path_file 被格式化为 "images\enemy1.png", "images\enemy2.png", ......
 			_stprintf_s(path_file, path_template, i + 1);
+			// 把磁盘上的图片（路径是 path_file）加载到图像数组中的第 i 张图（img_list[i]）中
 			loadimage(&img_list[i], path_file);
 		}
 	}

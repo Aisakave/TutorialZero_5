@@ -57,8 +57,8 @@ private:
 	float pass_time = 0;
 	float wait_time = 0;
 	bool paused = false;
-	bool shotted = false;
-	bool one_shot = false;
+	bool shotted = false; // 是否触发
+	bool one_shot = false; // 是否为一次性触发
 	std::function<void()> on_timeout;
 
 };
