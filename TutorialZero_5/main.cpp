@@ -39,7 +39,7 @@ int main(int argc, char** argv)
 		return -1;
 	}
 
-	const nanoseconds frame_duration(1000000000 / 144);
+	const nanoseconds FPS(1000000000 / 144);
 	steady_clock::time_point last_tick = steady_clock::now();
 
 	ExMessage msg;
@@ -69,9 +69,19 @@ int main(int argc, char** argv)
 		FlushBatchDraw();
 
 		last_tick = frame_start;
-		nanoseconds sleep_duration = frame_duration - (steady_clock::now() - frame_start);
+		nanoseconds sleep_duration = FPS - (steady_clock::now() - frame_start);
 		if (sleep_duration > nanoseconds(0))
 			std::this_thread::sleep_for(sleep_duration);
+		/*
+		这三行做了什么？
+			当前帧已经执行了一些代码（处理绘图等），耗时是：now - frame_start
+
+			距离目标帧时间（6.94ms）还差多久？差值是：FPS - 已耗时
+
+			如果还没到目标时间，就 sleep 等一等, 每 6.94ms（144 次/秒）要刷新一次画面以及一些处理
+
+			否则就不等了（说明这一帧太慢）
+		*/
 	}
 
 	EndBatchDraw();
