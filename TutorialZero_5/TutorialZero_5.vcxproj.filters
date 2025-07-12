@@ -24,6 +24,12 @@
     <ClCompile Include="collision_manager.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="state_machine.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="character.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="vector2.h">
@@ -51,6 +57,15 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="collision_manager.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="state_node.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="state_machine.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="character.h">
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
